@@ -1,0 +1,9 @@
+# macOS folder metadata
+.DS_Store
+
+# Photo originals dropped at the top level for Claude to process —
+# the site uses the copies in exocean/assets/img/
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
