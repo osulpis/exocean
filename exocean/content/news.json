@@ -5,6 +5,7 @@
   "items": [
     {
       "id": "eco2-morph",
+      "date": "2026-02",
       "headline": "eCO₂-MorpH: MSCA Postdoctoral Fellowship Awarded to Dr. Jaime SUÁREZ-IBARRA to Advance Palaeoclimate and CO₂ Reconstructions",
       "image": "news-lego.jpg",
       "image_credit": "Photo © Jaime SUÁREZ-IBARRA, 2026",
@@ -30,6 +31,7 @@
     },
     {
       "id": "alan-higgins-award",
+      "date": "2025-11",
       "headline": "Julie MEILLAND receives the Alan Higgins Award for her breakthrough research on planktonic foraminifera",
       "image": "news-julie.jpg",
       "image_credit": "Photo © Elodie GAZQUEZ, 2025",
@@ -49,6 +51,7 @@
     },
     {
       "id": "emb-mcdr-report",
+      "date": "2025-11",
       "headline": "Olivier SULPIS co-chairs a major European Marine Board report on mCDR",
       "image": "news-olivier.jpg",
       "image_credit": "Photo © Elodie GAZQUEZ, 2025",
@@ -80,11 +83,8 @@
           { "label": "Popular Science", "url": "https://www.popsci.com/seafloor-disappearing-acidification/" },
           { "label": "IFLScience", "url": "https://www.iflscience.com/our-oceans-are-becoming-so-acidic-it-could-dissolve-the-seabed-50393" },
           { "label": "Gizmodo", "url": "https://gizmodo.com/human-carbon-emissions-are-dissolving-the-ocean-floor-1830178302" },
-          { "label": "Daily Mail", "url": "https://www.dailymail.co.uk/sciencetech/article-6334309/The-ocean-floor-DISSOLVING-rapidly-study-warns-human-activity-blame.html" },
           { "label": "NBC News", "url": "https://www.nbcnews.com/mach/science/climate-change-may-be-dissolving-ocean-floor-here-s-why-ncna935261" },
           { "label": "La Vanguardia", "url": "https://www.lavanguardia.com/natural/cambio-climatico/20181031/452670178388/fondo-mar-esta-cambiando-color-imaginate.html" },
-          { "label": "Sputnik International", "url": "https://sputnikglobe.com/20181104/new-report-details-rapid-decay-ocean-acifidication-1069503276.html" },
-          { "label": "The Syria Times", "url": "http://syriatimes.sy/index.php/environment/38765-the-ocean-floor-is-dissolving-rapidly-study-warns-and-human-activity-is-to-blame" },
           { "label": "Le Devoir", "url": "https://www.ledevoir.com/societe/science/540139/l-anthropocene-s-invite-au-fond-des-mers" },
           { "label": "The Science Breaker", "url": "https://thesciencebreaker.org/breaks/earth-space/carbonating-the-bottom-of-the-oceanand-dissolving-the-seafloor-with-it" }
         ]
@@ -110,7 +110,7 @@
       {
         "heading": "Podcasts",
         "links": [
-          { "label": "CHOQ.ca : L'œuf ou la poule", "url": "https://www.choq.ca/balados/loeuf-ou-la-poule/emission-du-1-avril-2019/" }
+          { "label": "CHOQ.ca : L'œuf ou la poule (1 April 2019, archived copy)", "url": "https://web.archive.org/web/20240418232650/https://www.choq.ca/balados/loeuf-ou-la-poule/emission-du-1-avril-2019" }
         ]
       }
     ]

@@ -1,12 +1,21 @@
-name: Deploy exocean to GitHub Pages
+# Builds the site from exocean/content/*.json and publishes it to GitHub Pages.
+#
+# Runs on every push to main (a content edit goes live about a minute later),
+# and every Monday morning on its own: that scheduled run first refreshes the
+# publication list from HAL and the latest Bluesky posts, commits them if they
+# changed, then rebuilds and publishes. Nobody has to touch anything.
+
+name: Build and deploy exocean
 
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '17 5 * * 1'      # Mondays, 05:17 UTC
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write             # the weekly run commits refreshed content
   pages: write
   id-token: write
 
@@ -27,9 +36,37 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Generate HTML from content/
-        run: python3 build.py
+      - name: Refresh publications (HAL) and Bluesky posts
+        if: github.event_name != 'push'
         working-directory: exocean
+        run: |
+          python3 fetch_hal.py || echo "HAL refresh skipped"
+          python3 fetch_bluesky.py || echo "Bluesky refresh skipped"
+
+      - name: Generate HTML from content/
+        working-directory: exocean
+        run: python3 build.py
+
+      - name: Commit refreshed content
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "exocean site bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A exocean
+          if ! git diff --cached --quiet; then
+            git commit -m "Weekly refresh: publications and Bluesky posts"
+            git push
+          else
+            # GitHub switches scheduled workflows off after 60 days without a
+            # commit. If nothing has changed for 45 days, leave a tiny one.
+            last=$(git log -1 --format=%ct)
+            if [ $(( ($(date +%s) - last) / 86400 )) -ge 45 ]; then
+              date -u +"%Y-%m-%d" > exocean/content/last-refresh.txt
+              git add exocean/content/last-refresh.txt
+              git commit -m "Scheduled check-in (keeps the weekly refresh enabled)"
+              git push
+            fi
+          fi
 
       - uses: actions/configure-pages@v5
 

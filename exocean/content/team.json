@@ -7,6 +7,7 @@
       "members": [
         {
           "slug": "thomas-chalk",
+          "idhal": "thomas-chalk",
           "name": "Thomas CHALK",
           "affiliation": "CNRS Researcher at CEREGE, France",
           "role": "Isotope Geochemist",
@@ -29,6 +30,7 @@
         },
         {
           "slug": "julie-meilland",
+          "idhal": "julie-meilland",
           "name": "Julie MEILLAND",
           "affiliation": "CNRS Researcher at CEREGE, France",
           "role": "Plankton biologist",
@@ -50,6 +52,7 @@
         },
         {
           "slug": "olivier-sulpis",
+          "idhal": "olivier-sulpis",
           "name": "Olivier SULPIS",
           "affiliation": "CNRS Researcher at CEREGE, France",
           "role": "CO₂ neutralizer",
@@ -91,6 +94,7 @@
         },
         {
           "slug": "sonia-chaabane",
+          "idhal": "sonia-chaabane",
           "name": "Sonia CHAABANE",
           "affiliation": "IRD Researcher at CEREGE, France",
           "photo": "p-chaabane.jpg",
@@ -235,7 +239,7 @@
             "I am Associate Professor at La Rochelle University and part of the LIENSs laboratory since 2013. My expertise relies on ocean-biogeochemical modeling of the coastal ocean, including the land-to-sea interface. I focus on temperate to arctic environments, where I try to understand how changes in land-to-sea fluxes modulate coastal biogeochemistry, plankton and air-sea gas fluxes. To do so, I combine complex numerical ocean-sea ice-biogeochemical models with in situ and space remote sensing observations."
           ],
           "links": [
-            { "label": "Vincent's website", "url": "https://vincent-le-fouest.owlstown.net/" }
+            { "label": "Vincent's page at LIENSs", "url": "https://lienss.univ-larochelle.fr/Le-Fouest-Vincent" }
           ]
         },
         {
@@ -268,6 +272,11 @@
           "links": []
         }
       ]
+    },
+    {
+      "heading": "Former members",
+      "note": "Move a person's block here when they leave — keep the name, affiliation and role fields, set \"photo\": null if you prefer, and put the years in \"role\" (e.g. \"PhD student, 2022–2025\").",
+      "members": []
     }
   ]
 }

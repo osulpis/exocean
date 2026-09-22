@@ -5,18 +5,46 @@
    Cabin typeface, light neutral canvas.
    --------------------------------------------------------------- */
 
+/* Cabin (SIL Open Font License 1.1) served from this site rather than from
+   Google's servers — no third-party request on page load. Variable font,
+   weights 400–700 in one file per subset. See assets/fonts/LICENSE.txt. */
+@font-face {
+  font-family: "Cabin"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/cabin-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Cabin"; font-style: normal; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/cabin-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Cabin"; font-style: italic; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/cabin-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Cabin"; font-style: italic; font-weight: 400 700; font-display: swap;
+  src: url("../fonts/cabin-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 :root {
   color-scheme: light;
 
+  /* Brand orange stays for accents (rules, markers, borders). Text and
+     buttons use the darker shades, which clear WCAG AA (4.5:1) on white,
+     on the soft-orange callouts and on the grey canvas. */
   --orange:      #f07e1c;
-  --orange-dark: #c9640c;
+  --orange-dark: #ad540a;
+  --orange-deep: #8f4408;
   --orange-soft: #fdf3e8;
   --navy:        #0a0e1a;
   --blue:        #2d57a3;
 
   --ink:         #1f2124;
   --ink-soft:    #4a4f57;
-  --ink-faint:   #7c828b;
+  --ink-faint:   #6b7179;
   --line:        #e3e5e8;
   --canvas:      #f3f4f4;
   --sheet:       #ffffff;
@@ -54,7 +82,7 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 
 a { color: var(--orange-dark); text-decoration: none; }
-a:hover, a:focus-visible { color: var(--orange); text-decoration: underline; text-underline-offset: 2px; }
+a:hover, a:focus-visible { color: var(--orange-deep); text-decoration: underline; text-underline-offset: 2px; }
 
 :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 3px; }
 
@@ -110,11 +138,12 @@ a:hover, a:focus-visible { color: var(--orange); text-decoration: underline; tex
 }
 .nav a {
   display: block; padding: .3rem .1rem;
-  color: var(--orange); font-size: 1.05rem;
+  color: var(--orange-dark); font-size: 1.05rem;
   border-bottom: 2px solid transparent;
 }
-.nav a:hover { color: var(--orange-dark); text-decoration: none; border-bottom-color: rgba(240,126,28,.4); }
+.nav a:hover { color: var(--orange-deep); text-decoration: none; border-bottom-color: rgba(240,126,28,.4); }
 .nav a[aria-current="page"] { color: var(--orange-dark); border-bottom-color: var(--orange); }
+@media (max-width: 480px) { .nav { padding: .6rem .6rem; } .nav ul { gap: .1rem 1rem; } .nav a { font-size: .98rem; padding: .2rem .1rem; } }
 
 /* --- main / sections ------------------------------------------- */
 main { display: block; }
@@ -192,8 +221,8 @@ figcaption .credit { display: block; font-style: italic; }
   text-decoration: none; color: var(--orange-dark);
   border-color: var(--orange); background: var(--orange-soft);
 }
-.btn.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
-.btn.primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); color: #fff; }
+.btn.primary { background: var(--orange-dark); border-color: var(--orange-dark); color: #fff; }
+.btn.primary:hover, .btn.primary:focus-visible { background: var(--orange-deep); border-color: var(--orange-deep); color: #fff; }
 
 /* --- expertise ------------------------------------------------- */
 .expertise-item { border-top: 1px solid var(--line); padding-top: 1.6rem; margin-top: 1.8rem; }
@@ -303,6 +332,49 @@ a.person:hover { text-decoration: none; color: inherit; }
 }
 .media-links a:hover { border-color: var(--orange); color: var(--orange-dark); background: var(--orange-soft); text-decoration: none; }
 
+.news-date { margin: -.2rem 0 .9rem; font-size: var(--step--1); color: var(--ink-faint); font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
+
+/* --- "Latest from Bluesky" strip (news page) -------------------- */
+.bsky { margin: 0 0 2.6rem; }
+.bsky-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1rem; margin-bottom: .9rem; }
+.bsky-head h2 { margin: 0; font-size: var(--step-1); }
+.bsky-follow { font-size: var(--step--1); }
+.bsky-grid { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.bsky-post {
+  border: 1px solid var(--line); border-radius: var(--radius); background: #fff;
+  padding: .9rem 1rem 1rem; font-size: var(--step--1); line-height: 1.5;
+  display: flex; flex-direction: column; gap: .5rem;
+}
+.bsky-post p { margin: 0; }
+.bsky-date { font-weight: 700; letter-spacing: .03em; text-transform: uppercase; font-size: .72rem; }
+.bsky-date a { color: var(--ink-faint); }
+.bsky-text { color: var(--ink); overflow-wrap: anywhere; }
+.bsky-quote { color: var(--ink-soft); padding-left: .7rem; border-left: 3px solid var(--orange-soft); font-style: italic; }
+.bsky-link a { display: inline-block; font-weight: 700; }
+.bsky-link a::before { content: "→ "; color: var(--orange); }
+
+/* --- join us (contact page) ------------------------------------ */
+.join { margin-top: 3rem; }
+.join > h2 { margin-bottom: .6rem; }
+.join .lede { margin-bottom: .4rem; }
+.join-item { border-top: 1px solid var(--line); padding-top: 1.2rem; margin-top: 1.3rem; }
+.join-item h3 { margin-top: 0; margin-bottom: .35rem; }
+.join-note { margin-top: 1.6rem; font-weight: 700; }
+
+/* --- publications ---------------------------------------------- */
+.pub-updated { color: var(--ink-faint); font-size: var(--step--1); }
+.pub-year > h2 { display: flex; align-items: baseline; gap: .6rem; border-bottom: 1px solid var(--line); padding-bottom: .35rem; margin-bottom: 1rem; }
+.pub-count { font-size: var(--step--1); font-weight: 400; color: var(--ink-faint); }
+.pubs { list-style: none; padding: 0; margin: 0; }
+.pubs li { padding: .85rem 0 .85rem 1rem; border-left: 3px solid var(--orange-soft); margin-bottom: .6rem; }
+.pubs li:target { border-left-color: var(--orange); background: var(--orange-soft); }
+.pubs span { display: block; }
+.pub-title { font-weight: 700; line-height: 1.35; margin-bottom: .2rem; }
+.pub-authors { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.5; }
+.pub-authors strong { color: var(--ink); }
+.pub-where { font-size: var(--step--1); color: var(--ink-faint); margin-top: .2rem; }
+.pub-where a { font-weight: 700; }
+
 /* --- contact --------------------------------------------------- */
 .contact-card {
   border: 1px solid var(--line); border-radius: var(--radius);
@@ -319,7 +391,7 @@ a.person:hover { text-decoration: none; color: inherit; }
   padding: 2rem clamp(1rem, 4vw, 3rem) 2.4rem;
   text-align: center;
 }
-.site-footer .partners { max-width: 640px; margin: 0 auto 1.4rem; }
+.site-footer .partners { width: 100%; max-width: 640px; height: auto; margin: 0 auto 1.4rem; }
 .site-footer nav ul { list-style: none; margin: 0 0 1rem; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .3rem 1.2rem; }
 .site-footer nav a { font-size: var(--step--1); color: var(--ink-soft); }
 .site-footer nav a:hover { color: var(--orange-dark); }

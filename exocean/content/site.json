@@ -2,7 +2,8 @@
   "name": "exocean",
   "tagline": "Experimental Oceanology Laboratory",
   "description": "exocean is an experimental oceanology laboratory at CEREGE, Aix-en-Provence, founded by CNRS scientists studying the ocean's role in the global carbon cycle.",
-  "baseurl": "",
+  "baseurl": "https://osulpis.github.io/exocean",
+  "goatcounter": "",
   "email": "exocean@cerege.fr",
   "bluesky": "https://bsky.app/profile/exoceanlab.bsky.social",
   "address": ["CEREGE", "Technopôle de l'Arbois-Méditerranée", "BP80, 13545 Aix-en-Provence", "France"],
@@ -10,6 +11,7 @@
     { "label": "The Lab", "href": "index.html" },
     { "label": "Expertise", "href": "expertise.html" },
     { "label": "Projects", "href": "projects.html" },
+    { "label": "Publications", "href": "publications.html" },
     { "label": "Team", "href": "team.html" },
     { "label": "News & Highlights", "href": "news.html" },
     { "label": "Contact us", "href": "contact.html" }
@@ -80,6 +82,25 @@
     "title": "Let's connect!",
     "lede": "- Curious to learn more about our work or explore a potential collaboration?",
     "body": "We'd love to exchange ideas! Whether you're a researcher, partner institution, or simply intrigued by our projects, feel free to reach out."
+  },
+
+  "join": {
+    "title": "Join us",
+    "lede": "- Students, early-career researchers and visiting scientists are welcome all year round.",
+    "items": [
+      {
+        "title": "Internships",
+        "body": "We host Master's and undergraduate interns every year, usually for two to six months, on topics ranging from foraminifera culture and microscopy to carbonate chemistry, high-pressure experiments and sediment reactors. Write to us with a CV and a few lines on what you would like to learn — we can usually shape a project together."
+      },
+      {
+        "title": "PhD and postdoctoral positions",
+        "body": "Funded positions are announced on our <a href=\"https://bsky.app/profile/exoceanlab.bsky.social\">Bluesky account</a> as they open. We are also glad to hear from candidates who would like to prepare a fellowship application with us (Marie Skłodowska-Curie Actions and similar schemes). Send a CV, a short statement of interests and the name of the team member whose work is closest to yours."
+      },
+      {
+        "title": "Visiting scientists and facility access",
+        "body": "Colleagues who would like to run experiments with live planktonic foraminifera at COREFF, use the pressurized or rotating disk reactors, or spend time in the laboratory can contact <a href=\"people/julie-meilland.html\">Julie MEILLAND</a> (cultures) or <a href=\"people/olivier-sulpis.html\">Olivier SULPIS</a> (reactors) directly."
+      }
+    ]
   },
 
   "footer": {

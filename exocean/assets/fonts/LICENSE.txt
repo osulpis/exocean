@@ -1,0 +1,5 @@
+Cabin — Copyright 2011 The Cabin Project Authors (https://github.com/impallari/Cabin)
+Licensed under the SIL Open Font License, Version 1.1.
+Full licence text: https://openfontlicense.org/open-font-license-official-text/
+The four .woff2 files here are the variable-weight (400–700) builds served by
+Google Fonts, copied so that the site does not call Google's servers.

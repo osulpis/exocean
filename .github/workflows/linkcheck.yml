@@ -1,0 +1,48 @@
+# Once a month, follows every outside link on the site and opens a GitHub
+# issue listing the ones that no longer work. Nothing to maintain: if the
+# issue appears, ask Claude (or anyone) to fix or remove the links it names.
+
+name: Check links
+
+on:
+  schedule:
+    - cron: '23 6 1 * *'      # 1st of the month, 06:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Follow every external link
+        id: lychee
+        uses: lycheeverse/lychee-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # Only outside links (internal ones are generated, so always valid).
+          # 403/429/999 are "you look like a robot" answers, not dead pages.
+          args: >-
+            --no-progress
+            --scheme https --scheme http
+            --accept 200..=299,403,429,999
+            --exclude-mail
+            --exclude 'web\.archive\.org'
+            --max-retries 2
+            --timeout 30
+            --max-concurrency 6
+            'exocean/**/*.html'
+          fail: false
+          output: lychee-report.md
+
+      - name: Open an issue when something is broken
+        if: steps.lychee.outputs.exit_code != 0
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: "Broken links on the website (monthly check)"
+          content-filepath: ./lychee-report.md

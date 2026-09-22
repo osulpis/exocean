@@ -9,13 +9,20 @@ No dependencies beyond the Python standard library.
 
 Everything an editor would ever want to change lives in content/*.json.
 Nothing in this file needs touching to add a person, a project or a news item.
+
+Two extra files, content/publications.json and content/bluesky.json, are not
+edited by hand: fetch_hal.py and fetch_bluesky.py refresh them (the GitHub
+Action runs both once a week). If they are missing the site still builds —
+the Publications page and the Bluesky strip simply say so.
 """
 
 from __future__ import annotations
 
 import json
 import pathlib
+import re
 import shutil
+import unicodedata
 from html import escape
 
 ROOT = pathlib.Path(__file__).parent
@@ -23,8 +30,11 @@ CONTENT = ROOT / "content"
 OUT = ROOT
 
 
-def load(name: str) -> dict:
-    with open(CONTENT / f"{name}.json", encoding="utf-8") as fh:
+def load(name: str, optional: bool = False) -> dict:
+    path = CONTENT / f"{name}.json"
+    if optional and not path.exists():
+        return {}
+    with open(path, encoding="utf-8") as fh:
         return json.load(fh)
 
 
@@ -32,8 +42,18 @@ SITE = load("site")
 TEAM = load("team")
 PROJECTS = load("projects")
 NEWS = load("news")
+PUBLICATIONS = load("publications", optional=True)
+BLUESKY = load("bluesky", optional=True)
 
-ALL_MEMBERS = {m["slug"]: m for g in TEAM["groups"] for m in g["members"]}
+ALL_MEMBERS = {m["slug"]: m for g in TEAM["groups"] for m in g.get("members", [])}
+
+# Absolute address of the site, without trailing slash. Used wherever a
+# relative link would not do: link previews, the sitemap, the 404 page.
+BASE = (SITE.get("baseurl") or "").rstrip("/")
+ABS = -1  # pass as `depth` to get absolute URLs
+
+MONTHS = ["January", "February", "March", "April", "May", "June", "July",
+          "August", "September", "October", "November", "December"]
 
 
 # --------------------------------------------------------------------------
@@ -41,8 +61,36 @@ ALL_MEMBERS = {m["slug"]: m for g in TEAM["groups"] for m in g["members"]}
 # --------------------------------------------------------------------------
 
 def rel(depth: int, path: str) -> str:
-    """Resolve a root-relative path for a page nested `depth` levels down."""
+    """Resolve a root-relative path for a page nested `depth` levels down.
+    With depth=ABS the result is an absolute URL (needs "baseurl" in site.json)."""
+    if depth == ABS:
+        return f"{BASE}/{path}"
     return ("../" * depth) + path
+
+
+def absurl(path: str) -> str:
+    return f"{BASE}/{path}" if BASE else path
+
+
+def month_name(ym: str) -> str:
+    """'2026-02' -> 'February 2026'; anything else is returned untouched."""
+    m = re.fullmatch(r"(\d{4})-(\d{2})", ym or "")
+    if not m:
+        return ym or ""
+    return f"{MONTHS[int(m.group(2)) - 1]} {m.group(1)}"
+
+
+def _name_key(name: str) -> tuple[str, str]:
+    """('j', 'suarez-ibarra') for 'Jaime Y. SUÁREZ-IBARRA' — first initial and
+    last word, accents stripped, so HAL's spelling matches team.json's."""
+    plain = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode()
+    words = [w for w in re.split(r"[\s,]+", plain.strip()) if w]
+    if not words:
+        return ("", "")
+    return (words[0][0].lower(), words[-1].lower().strip("."))
+
+
+TEAM_KEYS = {_name_key(m["name"]) for m in ALL_MEMBERS.values()}
 
 
 def asset(depth: int, filename: str) -> str:
@@ -79,7 +127,7 @@ def bullets(items: list[str]) -> str:
 # page chrome
 # --------------------------------------------------------------------------
 
-def head(depth: int, title: str, description: str, active: str) -> str:
+def head(depth: int, title: str, description: str, active: str, path: str = "") -> str:
     full_title = SITE["name"] if title == SITE["name"] else f'{SITE["name"]} — {title}'
     nav_items = []
     for item in SITE["nav"]:
@@ -89,6 +137,11 @@ def head(depth: int, title: str, description: str, active: str) -> str:
         )
     nav = "\n".join(nav_items)
     hero = asset(depth, "hero-banner.webp")
+    # Link previews (Bluesky, WhatsApp, Slack…) and search engines need
+    # absolute addresses; everything else on the page stays relative.
+    page_url = absurl("" if path == "index.html" else path)
+    share = absurl("assets/img/share.jpg")
+    canonical = f'<link rel="canonical" href="{escape(page_url)}">\n<meta property="og:url" content="{escape(page_url)}">\n' if BASE and path != "404.html" else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -96,16 +149,17 @@ def head(depth: int, title: str, description: str, active: str) -> str:
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{escape(full_title)}</title>
 <meta name="description" content="{escape(description)}">
+{canonical}<meta property="og:site_name" content="{escape(SITE['name'])}">
 <meta property="og:title" content="{escape(full_title)}">
 <meta property="og:description" content="{escape(description)}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="{hero}">
+<meta property="og:image" content="{escape(share)}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0a0e1a">
 <link rel="icon" href="{asset(depth, 'favicon.png')}">
 <link rel="apple-touch-icon" href="{asset(depth, 'favicon.png')}">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400&display=swap">
 <link rel="stylesheet" href="{rel(depth, 'assets/css/style.css')}">
 </head>
 <body>
@@ -154,15 +208,25 @@ def foot(depth: int) -> str:
 
 </div>
 <script src="{rel(depth, 'assets/js/main.js')}"></script>
-</body>
+{analytics()}</body>
 </html>
 """
+
+
+def analytics() -> str:
+    """GoatCounter visitor counting — privacy-friendly, no cookies, no banner
+    needed. Off until "goatcounter" in site.json holds the site code."""
+    code = (SITE.get("goatcounter") or "").strip()
+    if not code:
+        return ""
+    return (f'<script data-goatcounter="https://{escape(code)}.goatcounter.com/count" '
+            f'async src="//gc.zgo.at/count.js"></script>\n')
 
 
 def write(path: str, depth: int, title: str, description: str, active: str, body: str) -> None:
     target = OUT / path
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(head(depth, title, description, active) + body + foot(depth), encoding="utf-8")
+    target.write_text(head(depth, title, description, active, path) + body + foot(depth), encoding="utf-8")
     print(f"  {path}")
 
 
@@ -205,7 +269,7 @@ def build_home() -> None:
 
         <div class="btn-row two">
           <a class="btn" href="team.html">Meet the team</a>
-          <a class="btn" href="contact.html">Collaborate with us</a>
+          <a class="btn primary" href="contact.html#join">Want to be part of the adventure?</a>
         </div>
 
         <h2>{escape(h['where_title'])}</h2>
@@ -218,15 +282,6 @@ def build_home() -> None:
         </figure>
 
         <p class="btn-row"><a class="btn" href="{escape(SITE['footer']['cerege_url'])}">More about CEREGE</a></p>
-
-        <div class="btn-row two">
-          <a class="btn" href="expertise.html">Our Expertise</a>
-          <a class="btn" href="news.html">News &amp; Highlights</a>
-        </div>
-        <div class="btn-row two">
-          <a class="btn" href="projects.html">Deep dive in our projects</a>
-          <a class="btn primary" href="contact.html">Want to be part of the adventure?</a>
-        </div>
       </div>
     </section>
 """
@@ -394,6 +449,8 @@ def build_team() -> None:
     d = 0
     groups = []
     for g in TEAM["groups"]:
+        if not g.get("members"):        # e.g. "Former members" while still empty
+            continue
         cards = []
         for m in g["members"]:
             if m.get("photo"):
@@ -422,7 +479,7 @@ def build_team() -> None:
         <p class="lede">{escape(TEAM['lede'])}</p>
         <hr class="rule">
 {chr(10).join(groups)}
-        <p class="btn-row"><a class="btn primary" href="contact.html">Want to collaborate? Join the team!</a></p>
+        <p class="btn-row"><a class="btn primary" href="contact.html#join">Want to collaborate? Join the team!</a></p>
       </div>
     </section>
 """
@@ -431,7 +488,7 @@ def build_team() -> None:
           "team.html", body)
 
     for g in TEAM["groups"]:
-        for m in g["members"]:
+        for m in g.get("members", []):
             if m.get("bio"):
                 build_person(m)
 
@@ -453,8 +510,12 @@ def build_person(m: dict) -> None:
                    f'{email_span(m["email_user"], m["email_domain"])}</p>')
 
     links = ""
-    if m.get("links"):
-        items = "".join(f'<li><a href="{escape(l["url"])}">{escape(l["label"])}</a></li>' for l in m["links"])
+    link_list = list(m.get("links") or [])
+    if m.get("idhal"):
+        link_list.insert(0, {"label": "Publications (HAL)",
+                             "url": f"https://hal.science/search/index/?q=*&authIdHal_s={m['idhal']}"})
+    if link_list:
+        items = "".join(f'<li><a href="{escape(l["url"])}">{escape(l["label"])}</a></li>' for l in link_list)
         links = f'        <p style="margin-top:1.4rem"><strong>Find more about my scientific work:</strong></p>\n        <ul class="links-list">{items}</ul>'
 
     body = f"""    <section class="section">
@@ -502,8 +563,10 @@ def build_news() -> None:
           <ul>{lis}</ul>
         </div>"""
 
+        when = f'<p class="news-date"><time datetime="{escape(n["date"])}">{escape(month_name(n["date"]))}</time></p>' if n.get("date") else ""
         items.append(f"""        <article class="news-item" id="{escape(n['id'])}">
           <h2>{escape(n['headline'])}</h2>
+          {when}
           <figure>
             <img src="{asset(d, n['image'])}" alt="" loading="lazy">
             <figcaption>{n['image_caption']}<span class="credit">{escape(n['image_credit'])}</span></figcaption>
@@ -526,6 +589,7 @@ def build_news() -> None:
         <h1>{escape(NEWS['title'])}</h1>
         <p class="lede">{escape(NEWS['lede'])}</p>
         <hr class="rule">
+{bluesky_strip(d)}
         <h2 style="margin-top:0">{escape(NEWS['spotlight_label'])}</h2>
 {chr(10).join(items)}
 
@@ -545,6 +609,143 @@ def build_news() -> None:
     write("news.html", d, NEWS["title"],
           "Awards, fellowships, reports and media coverage from the exocean laboratory at CEREGE.",
           "news.html", body)
+
+
+def join_section() -> str:
+    """Evergreen 'Join us' block on the Contact page (text in site.json)."""
+    j = SITE.get("join")
+    if not j:
+        return ""
+    blocks = "\n".join(
+        f"""        <article class="join-item">
+          <h3>{escape(i['title'])}</h3>
+          <p>{i['body']}</p>
+        </article>"""
+        for i in j["items"]
+    )
+    return f"""
+        <section id="join" class="join">
+          <h2>{escape(j['title'])}</h2>
+          <hr class="rule short">
+          <p class="lede">{escape(j['lede'])}</p>
+{blocks}
+          <p class="join-note">Write to us at {email_span(*SITE['email'].split('@'))} — a short e-mail is all it takes.</p>
+        </section>"""
+
+
+def bluesky_strip(depth: int) -> str:
+    """'Latest from Bluesky' — the lab's own recent posts, refreshed weekly by
+    fetch_bluesky.py. Silently absent if content/bluesky.json is missing."""
+    posts = (BLUESKY or {}).get("posts") or []
+    if not posts:
+        return ""
+    cards = []
+    for post in posts[:3]:
+        extra = ""
+        if post.get("quote"):
+            q = post["quote"]
+            snippet = q["text"] if len(q["text"]) <= 140 else q["text"][:139].rstrip() + "…"
+            extra += (f'<p class="bsky-quote"><a href="{escape(q["url"])}">@{escape(q["handle"])}</a>'
+                      f' — {escape(snippet)}</p>')
+        if post.get("link_url"):
+            extra += f'<p class="bsky-link"><a href="{escape(post["link_url"])}">{escape(post["link_title"])}</a></p>'
+        elif post.get("images"):
+            n = post["images"]
+            extra += f'<p class="bsky-link"><a href="{escape(post["url"])}">{n} photo{"s" if n > 1 else ""} on Bluesky</a></p>'
+        y, m, day = post["date"].split("-")
+        nice = f"{int(day)} {MONTHS[int(m) - 1]} {y}"
+        cards.append(f"""          <article class="bsky-post">
+            <p class="bsky-date"><a href="{escape(post['url'])}"><time datetime="{escape(post['date'])}">{nice}</time></a></p>
+            <p class="bsky-text">{post['html']}</p>
+            {extra}
+          </article>""")
+    handle = escape((BLUESKY or {}).get("handle", ""))
+    return f"""        <section class="bsky" aria-label="Latest from Bluesky">
+          <div class="bsky-head">
+            <h2>Latest from Bluesky</h2>
+            <a class="bsky-follow" href="{escape(SITE['bluesky'])}">Follow @{handle}</a>
+          </div>
+          <div class="bsky-grid">
+{chr(10).join(cards)}
+          </div>
+        </section>
+"""
+
+
+def format_authors(names: list[str]) -> str:
+    """Author list with the lab's people in bold; long consortium lists are
+    cut after 12 names, keeping any team member that came later."""
+    def mark(n: str) -> str:
+        return f"<strong>{escape(n)}</strong>" if _name_key(n) in TEAM_KEYS else escape(n)
+    if len(names) <= 12:
+        return ", ".join(mark(n) for n in names)
+    shown = [mark(n) for n in names[:12]]
+    late = [mark(n) for n in names[12:] if _name_key(n) in TEAM_KEYS]
+    tail = " et al." + (f" (incl. {', '.join(late)})" if late else "")
+    return ", ".join(shown) + tail
+
+
+def build_publications() -> None:
+    d = 0
+    pubs = PUBLICATIONS or {}
+    items = pubs.get("items") or []
+    idhal_people = [m for m in ALL_MEMBERS.values() if m.get("idhal")]
+    who = ", ".join(person_link(d, m["slug"], m["name"]) for m in idhal_people) or "the team"
+
+    if not items:
+        listing = ('        <p>The publication list could not be generated yet — it is built automatically '
+                   'from <a href="https://hal.science">HAL</a> and will appear after the next refresh.</p>')
+    else:
+        by_year: dict[int, list[dict]] = {}
+        for it in items:
+            by_year.setdefault(it.get("year") or 0, []).append(it)
+        sections = []
+        for year in sorted(by_year, reverse=True):
+            entries = []
+            for it in by_year[year]:
+                journal = f'<em>{escape(it["journal"])}</em>' if it.get("journal") else ""
+                if it.get("volume"):
+                    journal += f' {escape(it["volume"])}'
+                links = [f'<a href="https://hal.science/{escape(it["hal"])}">HAL</a>']
+                if it.get("doi"):
+                    links.insert(0, f'<a href="https://doi.org/{escape(it["doi"])}">DOI</a>')
+                if it.get("pdf"):
+                    links.append(f'<a href="{escape(it["pdf"])}">PDF</a>')
+                entries.append(f"""            <li id="{escape(it['hal'])}">
+              <span class="pub-title">{escape(it['title'])}</span>
+              <span class="pub-authors">{format_authors(it['authors'])}</span>
+              <span class="pub-where">{journal}{' · ' if journal else ''}{year or ''} · {' · '.join(links)}</span>
+            </li>""")
+            label = str(year) if year else "Undated"
+            sections.append(f"""        <section class="pub-year">
+          <h2 id="y{label}">{label} <span class="pub-count">{len(entries)}</span></h2>
+          <ol class="pubs">
+{chr(10).join(entries)}
+          </ol>
+        </section>""")
+        listing = "\n".join(sections)
+
+    updated = pubs.get("updated", "")
+    count = pubs.get("count", len(items))
+    body = f"""    <section class="section">
+      <div class="measure">
+        <h1>Publications</h1>
+        <p class="lede">- Peer-reviewed articles and book chapters by the exocean team.</p>
+        <hr class="rule">
+        <p>This list is drawn automatically from <a href="https://hal.science">HAL</a>, the French national
+        open archive, for {who} — names of team members are shown in bold. It refreshes itself every
+        week; open-access PDFs are linked whenever HAL holds one. {f'<span class="pub-updated">{count} publications · last refreshed {escape(updated)}.</span>' if updated else ''}</p>
+{listing}
+        <div class="btn-row two">
+          <a class="btn" href="projects.html">Explore our projects</a>
+          <a class="btn" href="team.html">Meet the team</a>
+        </div>
+      </div>
+    </section>
+"""
+    write("publications.html", d, "Publications",
+          "Peer-reviewed publications of the exocean laboratory at CEREGE, drawn automatically from the HAL open archive.",
+          "publications.html", body)
 
 
 def build_contact() -> None:
@@ -569,6 +770,7 @@ def build_contact() -> None:
           <a class="btn" href="{escape(SITE['bluesky'])}">Follow us on Bluesky</a>
           <a class="btn" href="news.html">News &amp; Highlights</a>
         </div>
+{join_section()}
       </div>
     </section>
 """
@@ -578,16 +780,18 @@ def build_contact() -> None:
 
 
 def build_404() -> None:
-    d = 0
-    body = """    <section class="section">
+    # GitHub Pages serves this page for any missing address, at any depth
+    # (…/projects/typo), so every link and asset on it must be absolute.
+    d = ABS if BASE else 0
+    body = f"""    <section class="section">
       <div class="measure">
         <h1>Page not found</h1>
         <p class="lede">- That page has drifted off into the abyss.</p>
         <hr class="rule">
         <p>The page you were looking for doesn't exist, or it has moved.</p>
         <div class="btn-row two">
-          <a class="btn primary" href="/index.html">Back to the lab</a>
-          <a class="btn" href="/contact.html">Contact us</a>
+          <a class="btn primary" href="{rel(d, 'index.html')}">Back to the lab</a>
+          <a class="btn" href="{rel(d, 'contact.html')}">Contact us</a>
         </div>
       </div>
     </section>
@@ -597,11 +801,11 @@ def build_404() -> None:
 
 def build_extras() -> None:
     """robots.txt and a sitemap, so the site is findable."""
-    pages = ["index.html", "expertise.html", "projects.html", "team.html", "news.html", "contact.html"]
+    pages = ["index.html", "expertise.html", "projects.html", "publications.html", "team.html", "news.html", "contact.html"]
     pages += [f"projects/{p['slug']}.html" for p in PROJECTS["projects"]]
     pages += [f"people/{m['slug']}.html" for m in ALL_MEMBERS.values() if m.get("bio")]
     base = SITE.get("baseurl") or ""
-    urls = "\n".join(f"  <url><loc>{base}/{p}</loc></url>" for p in pages)
+    urls = "\n".join(f"  <url><loc>{base}/{'' if p == 'index.html' else p}</loc></url>" for p in pages)
     (OUT / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n'
         f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n',
@@ -618,6 +822,7 @@ if __name__ == "__main__":
     build_expertise()
     build_projects()
     build_team()
+    build_publications()
     build_news()
     build_contact()
     build_404()
