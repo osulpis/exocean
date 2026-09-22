@@ -180,15 +180,54 @@
           ]
         },
         {
+          "slug": "devangi-sathe",
+          "name": "Devangi SATHE",
+          "affiliation": "CNRS Postdoctoral Researcher at CEREGE, France",
+          "photo": null,
+          "greeting": "Hello!",
+          "bio": [
+            "I am a postdoctoral researcher on the ERC project Deep-C at CEREGE, where I study how calcium carbonate dissolves in the deep sea. Using the laboratory's high-pressure reactors, I measure the solubility of different carbonate minerals at the pressures of the abyssal and hadal seafloor, and how fast they dissolve when microbes are respiring around them.",
+            "Before coming to Aix-en-Provence I did my PhD with Ronnie GLUD at the University of Southern Denmark (HADAL & Nordcee, Odense), studying microbial life under high pressure. That background in experimental microbiology is what brought me to the reactors: my aim is to understand how respiration in sediments drives carbonate dissolution, from incubations of coastal sediment to experiments at 1,000 bar."
+          ],
+          "email_user": "sathe",
+          "email_domain": "cerege.fr",
+          "links": []
+        },
+        {
           "slug": "katoo-declerck",
           "name": "Katoo DECLERCK",
-          "affiliation": "Biologist Intern at CEREGE, France",
+          "affiliation": "PhD Student at CEREGE, France",
           "photo": "p-declerck.jpg",
           "greeting": "Hallo!",
           "bio": [
-            "I am a biologist pursuing an internship at the exocean laboratory in CEREGE. My work focuses on the dissolution of foraminifera and the role of organic matter during this process. Passionate about the ocean, my aim is to get a better understanding of the importance of marine environments in mitigating climate change by dissolving calcium carbonates.",
+            "I am a biologist and PhD student at the exocean laboratory in CEREGE, supervised by Olivier SULPIS and Julie MEILLAND. My thesis follows deep-sea calcium carbonate dissolution from the microenvironment of a single foraminifera shell to the global carbon cycle, combining micro-CT imaging of dissolving shells, pore-scale modelling and dissolution experiments, with a particular interest in the role of organic matter. Passionate about the ocean, my aim is to get a better understanding of the importance of marine environments in mitigating climate change by dissolving calcium carbonates.",
             "Before joining CEREGE I studied global change biology at the University of Antwerp, where I learned about different consequences of climate change and to help mitigate these effects.",
             "Outside the lab you can find me somewhere hiking, chasing beautiful sunsets or enjoying a big cup of tea, usually accompanied with a homemade song and some jokes!"
+          ],
+          "links": []
+        },
+        {
+          "slug": "sarah-jedidi",
+          "name": "Sarah JEDIDI",
+          "affiliation": "Intern from CentraleSupélec at CEREGE, France",
+          "photo": null,
+          "greeting": "Salut !",
+          "bio": [
+            "I am an engineering student from CentraleSupélec, at CEREGE for a research internship on the MANGO project, which looks at how mangroves influence oxygen and nutrient dynamics in the coastal lagoons of Senegal. I joined the team's fieldwork in Senegal with Sonia CHAABANE and Maxime FELIX, and I work on the sediment and water chemistry we brought back, between the laboratory and the data.",
+            "What drew me here is the combination of field science and the carbon question: how fast-changing coastal ecosystems shape the chemistry of the ocean."
+          ],
+          "links": []
+        },
+        {
+          "slug": "ezra-finney",
+          "name": "Ezra FINNEY",
+          "affiliation": "Master's Student at Aix-Marseille Université, France",
+          "role": "Master's intern from January 2027",
+          "photo": null,
+          "greeting": "Salut !",
+          "bio": [
+            "I am a Master's student in Sciences de la mer at Aix-Marseille Université (Institut Pythéas), on the biology and ecology track, and I will join the exocean laboratory in January 2027 for my Master's research internship, on microbial incubations in the high-pressure reactors.",
+            "I first worked with the team in 2025, during my Licence, on a data-mining project combining seafloor respiration measurements, carbonate content and bathymetry to see how sediment chemistry is organised in the deepest ocean trenches — whether trenches act as funnels for carbon. I am coming back to continue on the experimental side."
           ],
           "links": []
         }
@@ -197,46 +236,6 @@
     {
       "heading": "Collaborators on current projects",
       "members": [
-        {
-          "slug": "dustin-carroll",
-          "name": "Dustin CARROLL",
-          "affiliation": "Research Scientist at Moss Landing Marine Labs, USA",
-          "role": "Earth System modeler",
-          "photo": "p-carroll.jpg",
-          "bio": [],
-          "links": []
-        },
-        {
-          "slug": "ronnie-glud",
-          "name": "Ronnie GLUD",
-          "affiliation": "Professor at Southern Denmark University, Denmark",
-          "role": "Hadal biogeochemist",
-          "photo": null,
-          "bio": [],
-          "links": []
-        },
-        {
-          "slug": "vincent-le-fouest",
-          "name": "Vincent LE FOUEST",
-          "affiliation": "Professor at La Rochelle Université, France",
-          "role": "Coastal modeler",
-          "photo": "p-lefouest.jpg",
-          "bio": [
-            "I am Associate Professor at La Rochelle University and part of the LIENSs laboratory since 2013. My expertise relies on ocean-biogeochemical modeling of the coastal ocean, including the land-to-sea interface. I focus on temperate to arctic environments, where I try to understand how changes in land-to-sea fluxes modulate coastal biogeochemistry, plankton and air-sea gas fluxes. To do so, I combine complex numerical ocean-sea ice-biogeochemical models with in situ and space remote sensing observations."
-          ],
-          "links": [
-            { "label": "Vincent's page at LIENSs", "url": "https://lienss.univ-larochelle.fr/Le-Fouest-Vincent" }
-          ]
-        },
-        {
-          "slug": "dimitris-menemenlis",
-          "name": "Dimitris MENEMENLIS",
-          "affiliation": "Research scientist at the Jet Propulsion Laboratory, NASA, USA",
-          "role": "Earth system modeler",
-          "photo": null,
-          "bio": [],
-          "links": []
-        },
         {
           "slug": "christian-tamburini",
           "name": "Christian TAMBURINI",
@@ -247,14 +246,39 @@
           "links": []
         },
         {
-          "slug": "mariette-wolthers",
-          "name": "Mariette WOLTHERS",
-          "affiliation": "Professor at Utrecht University, the Netherlands",
-          "role": "Mineral-water geochemist",
-          "photo": "p-wolthers.jpg",
-          "bio": [
-            "My main research focus is on the interaction between water and minerals (crystals, Earth Materials). I investigate the influence of mineral formation/dissolution on water quality and vice versa. I explore mineral nucleation, growth, dissolution and surface reactivity, with and without impurity ions and at different ratios of the crystal-building ions. My approach is both experimental and theoretical; the tools I use to study earth materials range from atomic scale computational chemistry and macroscale geochemical modelling to sophisticated analyses techniques such as electron microscopy, light scattering and synchrotron-based spectroscopy."
-          ],
+          "slug": "marc-garel",
+          "name": "Marc GAREL",
+          "affiliation": "CNRS Research Engineer at MIO, France",
+          "role": "High-pressure microbiology",
+          "photo": null,
+          "bio": [],
+          "links": []
+        },
+        {
+          "slug": "ronnie-glud",
+          "name": "Ronnie GLUD",
+          "affiliation": "Professor at the University of Southern Denmark, Denmark",
+          "role": "Hadal biogeochemist",
+          "photo": null,
+          "bio": [],
+          "links": []
+        },
+        {
+          "slug": "peter-stief",
+          "name": "Peter STIEF",
+          "affiliation": "Associate Professor at the University of Southern Denmark, Denmark",
+          "role": "Microbial ecologist",
+          "photo": null,
+          "bio": [],
+          "links": []
+        },
+        {
+          "slug": "steeve-comeau",
+          "name": "Steeve COMEAU",
+          "affiliation": "CNRS Researcher at LOV, Villefranche-sur-Mer, France",
+          "role": "Calcification ecophysiologist",
+          "photo": null,
+          "bio": [],
           "links": []
         }
       ]

@@ -56,8 +56,8 @@
         { "name": "Maxime FELIX", "slug": "maxime-felix" }
       ],
       "external": [
-        "Christian TAMBURINI (MIO, France)",
-        "Ronnie N. GLUD (SDU, Denmark)",
+        "Christian TAMBURINI and Marc GAREL (MIO, France)",
+        "Ronnie N. GLUD and Peter STIEF (SDU, Denmark)",
         "Dustin CARROLL (San José State University, USA)"
       ],
       "funders": ["funder-eu-erc.png", "funder-cnrs.png", "funder-cerege.png"]
@@ -218,7 +218,7 @@
       "keywords": "isotope geochemistry, boron isotopes, pH, CO₂, climate sensitivity",
       "lead": { "label": "Principal Investigator", "name": "Thomas CHALK", "slug": "thomas-chalk", "email_user": "chalk", "email_domain": "cerege.fr" },
       "participants": [
-        { "name": "Matthieu PAULHAC-BUISSON", "slug": "matthieu-buisson" },
+        { "name": "Matthieu BUISSON", "slug": "matthieu-buisson" },
         { "name": "Jaime Y. SUÁREZ-IBARRA", "slug": "jaime-suarez-ibarra" },
         { "name": "Clara BOLTON", "url": "https://www.cerege.fr/fr/cerege/clara-bolton/" },
         { "name": "Abel GUIHOU", "url": "https://www.cerege.fr/fr/cerege/abel-guihou/" },
