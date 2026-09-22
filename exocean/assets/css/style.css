@@ -32,12 +32,8 @@
 :root {
   color-scheme: light;
 
-  /* Brand orange stays for accents (rules, markers, borders). Text and
-     buttons use the darker shades, which clear WCAG AA (4.5:1) on white,
-     on the soft-orange callouts and on the grey canvas. */
   --orange:      #f07e1c;
-  --orange-dark: #ad540a;
-  --orange-deep: #8f4408;
+  --orange-dark: #c9640c;
   --orange-soft: #fdf3e8;
   --navy:        #0a0e1a;
   --blue:        #2d57a3;
@@ -82,7 +78,7 @@ body {
 img { max-width: 100%; height: auto; display: block; }
 
 a { color: var(--orange-dark); text-decoration: none; }
-a:hover, a:focus-visible { color: var(--orange-deep); text-decoration: underline; text-underline-offset: 2px; }
+a:hover, a:focus-visible { color: var(--orange); text-decoration: underline; text-underline-offset: 2px; }
 
 :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 3px; }
 
@@ -138,10 +134,10 @@ a:hover, a:focus-visible { color: var(--orange-deep); text-decoration: underline
 }
 .nav a {
   display: block; padding: .3rem .1rem;
-  color: var(--orange-dark); font-size: 1.05rem;
+  color: var(--orange); font-size: 1.05rem;
   border-bottom: 2px solid transparent;
 }
-.nav a:hover { color: var(--orange-deep); text-decoration: none; border-bottom-color: rgba(240,126,28,.4); }
+.nav a:hover { color: var(--orange-dark); text-decoration: none; border-bottom-color: rgba(240,126,28,.4); }
 .nav a[aria-current="page"] { color: var(--orange-dark); border-bottom-color: var(--orange); }
 @media (max-width: 480px) { .nav { padding: .6rem .6rem; } .nav ul { gap: .1rem 1rem; } .nav a { font-size: .98rem; padding: .2rem .1rem; } }
 
@@ -221,8 +217,8 @@ figcaption .credit { display: block; font-style: italic; }
   text-decoration: none; color: var(--orange-dark);
   border-color: var(--orange); background: var(--orange-soft);
 }
-.btn.primary { background: var(--orange-dark); border-color: var(--orange-dark); color: #fff; }
-.btn.primary:hover, .btn.primary:focus-visible { background: var(--orange-deep); border-color: var(--orange-deep); color: #fff; }
+.btn.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
+.btn.primary:hover, .btn.primary:focus-visible { background: var(--orange-dark); border-color: var(--orange-dark); color: #fff; }
 
 /* --- expertise ------------------------------------------------- */
 .expertise-item { border-top: 1px solid var(--line); padding-top: 1.6rem; margin-top: 1.8rem; }

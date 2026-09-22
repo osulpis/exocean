@@ -223,11 +223,27 @@ def analytics() -> str:
             f'async src="//gc.zgo.at/count.js"></script>\n')
 
 
+WRITTEN: set[str] = set()
+
+
 def write(path: str, depth: int, title: str, description: str, active: str, body: str) -> None:
     target = OUT / path
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(head(depth, title, description, active, path) + body + foot(depth), encoding="utf-8")
+    WRITTEN.add(path)
     print(f"  {path}")
+
+
+def prune() -> None:
+    """Delete generated pages whose person or project no longer exists in
+    content/ — e.g. someone removed from team.json — so the site never keeps
+    serving a page for them. Only people/ and projects/ are touched."""
+    for folder in ("people", "projects"):
+        for page in sorted((OUT / folder).glob("*.html")):
+            rel_path = f"{folder}/{page.name}"
+            if rel_path not in WRITTEN:
+                page.unlink()
+                print(f"  removed stale {rel_path}")
 
 
 # --------------------------------------------------------------------------
@@ -827,4 +843,5 @@ if __name__ == "__main__":
     build_contact()
     build_404()
     build_extras()
+    prune()
     print("Done.")

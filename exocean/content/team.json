@@ -143,20 +143,6 @@
           "links": []
         },
         {
-          "slug": "hinne-van-der-zant",
-          "name": "Hinne VAN DER ZANT",
-          "affiliation": "PhD student at LIttoral ENvironnement et Sociétés (LIENSs), France",
-          "photo": "p-vanderzant.jpg",
-          "greeting": "Bonjour !",
-          "bio": [
-            "I am a PhD student at LIENSs (La Rochelle University). My research focuses on linking seafloor biogeochemical processes to the overlying ocean waters, with a particular interest in ocean acidification, deoxygenation, and the marine carbon cycle. I develop and use numerical models of sediment diagenesis to quantify sediment–water exchange (e.g., oxygen, nutrients, and carbon/alkalinity) and to understand how these benthic processes influence water-column chemistry and ecosystem functioning. A key part of my work is turning detailed process understanding into tools that can be integrated into larger-scale ocean models, improving how seafloor processes are represented in global simulations.",
-            "In parallel, I work at the Dutch Marine Energy Centre, focusing on modelling questions related to offshore renewable energy and how combining different technologies can help shape the energy grid of the future.",
-            "Before joining LIENSs, I completed an MSc in Marine Sciences at Utrecht University, where I developed my interest in ocean biogeochemistry.",
-            "Outside the lab, you'll usually find me in or on the ocean, especially surfing or kitesurfing."
-          ],
-          "links": []
-        },
-        {
           "slug": "jaime-suarez-ibarra",
           "name": "Jaime Y. SUÁREZ-IBARRA",
           "affiliation": "CNRS Postdoctoral Researcher at CEREGE, France",
