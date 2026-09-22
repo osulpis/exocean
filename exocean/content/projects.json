@@ -1,0 +1,275 @@
+{
+  "title": "What We're Working On",
+  "lede": "- A glimpse into the diverse research projects we're leading today.",
+  "projects": [
+    {
+      "slug": "deep-c",
+      "name": "DEEP-C",
+      "card_image": "card-erc.jpg",
+      "card_text": "Deep-sea carbonates under pressure: mechanisms of dissolution and climate feedbacks.",
+      "funder": "ERC Starting Grant (2025–2029)",
+      "subtitle": "Deep-sea Carbonates under pressure: mechanisms of dissolution and climate feedbacks",
+      "intro": [
+        "The deep seafloor—one of the largest carbon reservoirs on Earth—holds immense stores of calcium carbonate (CaCO₃), a mineral critical for long-term carbon cycling and climate regulation. Human-driven ocean acidification is triggering CaCO₃ dissolution in deep-sea sediments, releasing alkalinity that helps buffer excess CO₂. Yet, the physical and microbial controls on this process remain poorly quantified, particularly under abyssal and hadal conditions where extreme pressures prevail.",
+        "Despite its global importance for ocean biogeochemistry, CaCO₃ dissolution at depth is still modeled using outdated solubility constants and uncertain rate laws. This severely limits the reliability of Earth system models in predicting the fate of anthropogenic CO₂. Project Deep-C addresses this knowledge gap by combining high-pressure experimentation with global-scale modeling to resolve the mechanisms, rates, and climatic implications of deep-sea carbonate dissolution."
+      ],
+      "sections": [
+        {
+          "heading": "Objectives",
+          "intro": "Deep-C aims to uncover how pressure, mineral composition, and microbial activity govern CaCO₃ dissolution in deep-sea environments. It addresses 3 key questions:",
+          "items": [
+            "How does pressure influence the solubility and dissolution rate of diverse CaCO₃ minerals?",
+            "To what extent do microbial respiration processes contribute to deep-sea CaCO₃ dissolution?",
+            "How will changes in organic carbon flux affect global alkalinity generation and climate feedbacks?"
+          ]
+        },
+        {
+          "heading": "Approach",
+          "intro": "Deep-C uses a novel multi-scale strategy:",
+          "items": [
+            "<strong>High-Pressure Reactors:</strong> Custom-designed reactors will simulate abyssal to hadal pressures (up to 1000 bars) while allowing in situ monitoring of pH and oxygen. These systems will enable precise measurements of CaCO₃ solubility, molecular diffusion, and dissolution kinetics.",
+            "<strong>Cultured and Synthetic Carbonates:</strong> ¹³C-labeled calcite and aragonite from cultured coccolithophores, foraminifera, algae, and synthetic minerals will be used to trace dissolution pathways under controlled conditions.",
+            "<strong>Microbial Sediment Experiments:</strong> Sediments and microbial communities sampled off Marseille and from Japan's hadal trenches will be used to assess how bacterial respiration influences carbonate dissolution.",
+            "<strong>Global Modeling:</strong> Results will be integrated into the NASA-funded ECCO-Darwin ocean biogeochemical model to simulate current and future CO₂ neutralization dynamics via seafloor CaCO₃ dissolution."
+          ]
+        },
+        {
+          "heading": "Expected Impact",
+          "intro": "Deep-C will pioneer a new generation of high-pressure oceanographic research, providing:",
+          "items": [
+            "Empirical rate laws and updated solubility constants for use in Earth system models",
+            "Mechanistic insights into carbon cycling in extreme environments",
+            "Revised estimates of CO₂ removal via deep-sea carbonate dissolution",
+            "A pressure reactor facility at CEREGE available to the broader research community"
+          ],
+          "outro": "By clarifying the role of the deep ocean in buffering anthropogenic CO₂, Deep-C will inform future climate policies and enhance predictive capacity for carbon-climate feedbacks."
+        }
+      ],
+      "keywords": "Deep sea, CaCO₃ dissolution, pressure solubility, carbon cycling, microbial respiration, high-pressure reactors, ocean alkalinity, ECCO-Darwin, foraminifera, aragonite, calcite",
+      "lead": { "label": "Principal Investigator", "name": "Olivier SULPIS", "slug": "olivier-sulpis", "email_user": "sulpis", "email_domain": "cerege.fr" },
+      "participants": [
+        { "name": "Sonia CHAABANE", "slug": "sonia-chaabane" },
+        { "name": "Julie MEILLAND", "slug": "julie-meilland" },
+        { "name": "Tom CHALK", "slug": "thomas-chalk" },
+        { "name": "Marine JAUMON", "slug": "marine-jaumon" },
+        { "name": "Maxime FELIX", "slug": "maxime-felix" }
+      ],
+      "external": [
+        "Christian TAMBURINI (MIO, France)",
+        "Ronnie N. GLUD (SDU, Denmark)",
+        "Dustin CARROLL (San José State University, USA)"
+      ],
+      "funders": ["funder-eu-erc.png", "funder-cnrs.png", "funder-cerege.png"]
+    },
+    {
+      "slug": "mango",
+      "name": "MANGO",
+      "card_image": "card-mango.jpg",
+      "card_text": "Diagram showing nutrient-rich, oxygen-poor lagoon waters influencing coastal biogeochemical processes.",
+      "funder": "2025–2027 · INSU LEFE CYBER 2025",
+      "subtitle": "Mangrove Influence on Lagoon Eutrophication and Coastal Deoxygenation in Senegal",
+      "hero_image": "card-mango.jpg",
+      "intro": [
+        "Coastal marine ecosystems in tropical regions are increasingly threatened by climate change and human activities. Rising temperatures and enhanced microbial respiration intensify water column stratification, leading to progressive subsurface deoxygenation. This not only disrupts biogeochemical cycles but also endangers biodiversity and fishery resources that are vital for local communities.",
+        "In Senegal, the spread of anoxic zones is particularly pronounced near mangrove-fringed lagoons. The combination of organic matter inputs from mangroves and climate-driven deoxygenation is altering coastal biogeochemistry, potentially degrading fisheries and impacting the regional economy. Yet, the mechanisms driving these changes remain poorly understood."
+      ],
+      "sections": [
+        {
+          "heading": "Objectives",
+          "intro": "MANGO aims to clarify the role of mangroves in coastal eutrophication and deoxygenation in Senegal by reconstructing oxygenation trends over the past century and disentangling the respective influences of oceanic changes and local mangrove dynamics. The project seeks to answer 2 key questions:",
+          "items": [
+            "How has coastal oxygenation evolved over the past 100 years?",
+            "What proportion of this evolution is attributable to oceanic drivers versus mangrove-related processes?"
+          ]
+        },
+        {
+          "heading": "Approach",
+          "intro": "MANGO employs an integrated, multidisciplinary strategy:",
+          "items": [
+            "<strong>Fieldwork &amp; Sampling:</strong> Sediment cores and surface samples will be collected from two key lagoon outlets (Mbodiène and Joal-Fadiouth) to reconstruct long-term oxygenation patterns.",
+            "<strong>Biogeochemical Analyses:</strong> In-situ measurements (oxygen, pH, temperature) will be complemented by stable isotope (δ¹³C, δ¹⁵N) analysis to trace organic matter sources and denitrification processes.",
+            "<strong>Benthic Foraminifera Study:</strong> These micro-organisms, sensitive to oxygen levels, will serve as bioindicators. Identification and quantification will be automated using a low-cost imaging system (SASHIMI) enhanced with AI-based morphometric analysis.",
+            "<strong>Sediment Modeling:</strong> A calibrated diagenetic model (RADI) will simulate oxygen gradients and dominant processes (organic matter degradation, mangrove inputs, mineral precipitation), enabling future projections."
+          ]
+        },
+        {
+          "heading": "Expected Impact",
+          "intro": "MANGO will enhance understanding of the biogeochemical processes shaping Senegal's coastal ecosystems and inform:",
+          "items": [
+            "Sustainable fisheries management strategies",
+            "Capacity building in micropaleontology and environmental modeling",
+            "Scientific collaboration between Global South and North institutions"
+          ],
+          "outro": "The project aligns with the priorities of LMI ECLAIRS 2 and Institut de Recherche pour le Développement (IRD) initiatives for sustainable science and climate resilience."
+        }
+      ],
+      "keywords": "Anoxia, mangrove, nutrients, sediments, diagenetic modeling, organic matter, nitrogen and carbon isotopes, foraminifera, Senegal",
+      "lead": { "label": "Principal Investigator", "name": "Sonia CHAABANE", "slug": "sonia-chaabane" },
+      "colead": { "label": "Co-PI", "name": "Olivier SULPIS", "slug": "olivier-sulpis", "email_user": "sulpis", "email_domain": "cerege.fr" },
+      "participants": [
+        { "name": "Thibault DE GARIDEL-THORON", "url": "https://www.cerege.fr/fr/cerege/thibault-de-garidel-thoron/" },
+        { "name": "Laetitia LICARI", "url": "https://www.cerege.fr/fr/cerege/laetitia-licari/" },
+        { "name": "Guillaume LEDUC", "url": "https://www.cerege.fr/fr/cerege/guillaume-leduc/" },
+        { "name": "Anne-Lise JOURDAN", "url": "https://www.cerege.fr/fr/cerege/anne-lise-jourdan/" }
+      ],
+      "external": [
+        "Malick THIAM, Amadou Thierno GAYE, Ibrahima CAMARA (UCAD, Senegal)",
+        "Eric MACHU (IRD/LOPS, Ifremer Brest, France)"
+      ],
+      "funders": ["funder-ird.png", "funder-cnrs.png", "funder-cerege.png"]
+    },
+    {
+      "slug": "dynamite",
+      "name": "DYNAMITE",
+      "card_image": "card-dynamite.jpg",
+      "card_text": "DYNAMics of the production and export of aragonITE shells.",
+      "funder": "CESAB – FRB Biodiversity Foundation (2024–2026)",
+      "subtitle": "Dynamics of Aragonite Shell Production and Export in the Global Ocean",
+      "hero_image": "dynamite-fig.jpg",
+      "intro": [
+        "Planktonic organisms that secrete calcium carbonate (CaCO₃) shells play a pivotal role in the ocean's capacity to absorb atmospheric CO₂. Aragonite, one of the primary mineral forms of CaCO₃, is produced by pelagic snails such as pteropods, heteropods, and janthinids. Despite their significance, the global dynamics of aragonite production and export remain poorly quantified, with existing estimates of its contribution to marine CaCO₃ production ranging widely from 1% to 98%. Additionally, the spatial distribution of aragonite production is largely unknown."
+      ],
+      "sections": [
+        {
+          "heading": "Objectives",
+          "intro": "DYNAMITE aims to elucidate the production and export dynamics of aragonite shells in the world's oceans by:",
+          "items": [
+            "Quantifying the global contribution of aragonite to marine calcium carbonate production.",
+            "Mapping the spatial distribution of aragonite-producing organisms.",
+            "Understanding the temporal trends in aragonite shell production and export over recent decades."
+          ]
+        },
+        {
+          "heading": "Approach",
+          "intro": "To achieve these objectives, DYNAMITE brings together an international consortium of experts in taxonomy, ecology, marine biogeochemistry, and carbonate chemistry to:",
+          "items": [
+            "<strong>Data Compilation:</strong> Synthesize and harmonize existing datasets on aragonite-producing plankton, including historical and contemporary records.",
+            "<strong>Database Development:</strong> Create a comprehensive, open-access database detailing the production and export rates of aragonite shells globally.",
+            "<strong>Modeling and Analysis:</strong> Employ biogeochemical models to simulate aragonite dynamics and assess their implications for the oceanic carbon cycle."
+          ]
+        },
+        {
+          "heading": "Expected Impact",
+          "intro": "By providing a clearer understanding of aragonite shell production and export, DYNAMITE will:",
+          "items": [
+            "Enhance predictions of the ocean's role in carbon sequestration.",
+            "Inform climate models and global carbon budget assessments.",
+            "Support conservation strategies for vulnerable planktonic species affected by ocean acidification."
+          ]
+        }
+      ],
+      "keywords": "Aragonite, calcium carbonate, planktonic mollusks, carbon cycle, ocean acidification, marine biogeochemistry, global database, pteropods, heteropods, janthinids",
+      "lead": { "label": "Principal Investigator", "name": "Julie MEILLAND", "slug": "julie-meilland", "email_user": "meilland", "email_domain": "cerege.fr" },
+      "colead": { "label": "Co-PI", "name": "Olivier SULPIS", "slug": "olivier-sulpis", "email_user": "sulpis", "email_domain": "cerege.fr" },
+      "participants": [{ "name": "Sonia CHAABANE", "slug": "sonia-chaabane" }],
+      "external": [
+        "Deborah WALL-PALMER – Naturalis Biodiversity Center (Netherlands)",
+        "Katja PEIJNENBURG – University of Amsterdam &amp; Naturalis Biodiversity Center (Netherlands)",
+        "Fabio BENEDETTI – ETH Zurich (Switzerland)",
+        "Nina BEDNARSEK – Oregon State University, CIMERS (USA/Slovenia)",
+        "Ralf SCHIEBEL – Max Planck Institute for Chemistry (Germany)",
+        "Mark OHMAN – Scripps Institution of Oceanography, University of California San Diego (USA)",
+        "Clara MANNO – British Antarctic Survey (UK)"
+      ],
+      "note": "DYNAMITE was selected through the 2023 CESAB Datashare call for proposals, following evaluation by an independent panel of experts.",
+      "funders": ["funder-cnrs.png", "funder-cerege.png"]
+    },
+    {
+      "slug": "forcry",
+      "name": "FORCRY",
+      "card_image": "card-erc.jpg",
+      "card_text": "Analysing frozen Foraminifera by Cryostage LA-ICPMS: Neogene CO₂, patterns, cycles, and climate sensitivity.",
+      "funder": "ERC Starting Grant (2022–2028)",
+      "subtitle": "Analysing frozen Foraminifera by Cryostage LA-ICPMS: Neogene CO₂, patterns, cycles, and climate sensitivity",
+      "intro": [
+        "Knowledge of past concentrations of atmospheric carbon dioxide (CO₂) has transformed our understanding of earth's climate: past, present, and future. Ice cores have yielded 800,000 years of high resolution and high precision data, revolutionising Earth system science. Marine sediment records provide the opportunity for highly resolved records of ocean and past ocean pH (and therefore ocean and atmosphere CO₂ content) over millions of years by means of the δ¹¹B-pH proxy, but present progress is currently hampered by large sample size requirements and intensive laboratory techniques limiting throughput and applicability.",
+        "Innovation is therefore required to answer a number of key questions, including: \"How do spatial variations in ocean carbon flux cause natural climate variability?\" and \"Does climate sensitivity vary with background state?\". By analysing small samples frozen into a blank-free ice puck, ForCry exploits the increased sensitivity of laser ablation δ¹¹B analysis to enable the next generation of past climate data to be recovered. This novel approach allows analyses to be conducted on ≤20 individual plankton representing a ~10-fold reduction in sample size, but while maintaining precision. Additionally, this approach removes costly chemical purification steps and leads to higher throughput which makes high-resolution CO₂ reconstructions using the δ¹¹B-pH proxy a viable option to augment and extend the ice core CO₂ records."
+      ],
+      "sections": [
+        {
+          "heading": "Objectives",
+          "items": [
+            "Develop techniques to reduce the amount of material needed to measure boron isotopes values from planktonic foraminifera (surface dwelling biogenic carbonate producers).",
+            "Calibrate the relationship between boron isotopes and oceanic pH (acidity) in multiple species.",
+            "Map changes in carbon flux to and from the oceans through time.",
+            "Reconstruct atmospheric CO₂ levels at high resolution in Neogene snapshots."
+          ]
+        },
+        {
+          "heading": "Approach",
+          "items": [
+            "Using the contamination-free properties of de-ionized water to freeze small fragments of material in place allows them to be laser-ablated at higher efficiency than with traditional pellets (which require more material) or resin (which includes contaminant phases).",
+            "Growing biogenic carbonates (foraminifera) in the laboratory under controlled conditions allows them to be measured with respect to their precise environments.",
+            "Measuring fossil carbonates from preserved deep sea sediments to understand the climate and ocean system from when they were alive; 0 to 20 million years ago."
+          ]
+        },
+        {
+          "heading": "Expected Impact",
+          "intro": "I seek to understand:",
+          "items": [
+            "How reliable our archives of past greenhouse gases are over millions of years of Earth history?",
+            "How carbon moves between the atmosphere and the ocean during natural climate change events?",
+            "How sensitive the climate system is to changes in CO₂ and whether this relationship is constant through time?"
+          ]
+        }
+      ],
+      "keywords": "isotope geochemistry, boron isotopes, pH, CO₂, climate sensitivity",
+      "lead": { "label": "Principal Investigator", "name": "Thomas CHALK", "slug": "thomas-chalk", "email_user": "chalk", "email_domain": "cerege.fr" },
+      "participants": [
+        { "name": "Matthieu PAULHAC-BUISSON", "slug": "matthieu-buisson" },
+        { "name": "Jaime Y. SUÁREZ-IBARRA", "slug": "jaime-suarez-ibarra" },
+        { "name": "Clara BOLTON", "url": "https://www.cerege.fr/fr/cerege/clara-bolton/" },
+        { "name": "Abel GUIHOU", "url": "https://www.cerege.fr/fr/cerege/abel-guihou/" },
+        { "name": "Sonia CHAABANE", "slug": "sonia-chaabane" },
+        { "name": "Thibault DE GARIDEL-THORON", "url": "https://www.cerege.fr/fr/cerege/thibault-de-garidel-thoron/" }
+      ],
+      "former": ["Rachel BROWN — University of Southampton (UK)", "Juliette BODY", "Maxime FELIX"],
+      "external": ["Christopher STANDISH — University of Southampton (UK)"],
+      "funders": ["funder-eu-erc.png", "funder-cnrs.png", "funder-cerege.png"]
+    },
+    {
+      "slug": "asperge",
+      "name": "Completed project: ASPERGE (2022–2025)",
+      "short_name": "ASPERGE",
+      "completed": true,
+      "card_image": "card-asperge.jpg",
+      "card_text": "Aragonite at the Seafloor: a secret PlayEr in the ReGulation of Earth's climate?",
+      "funder": "NWO Veni grant (2022–2025)",
+      "subtitle": "Aragonite at the Seafloor: a secret PlayEr in the ReGulation of Earth's climate?",
+      "hero_image": "asperge-fig.jpg",
+      "intro": [
+        "About a quarter of the Earth's surface is covered by marine sediments rich in calcium carbonates (CaCO₃), whose dissolution acts as a natural buffer against ocean acidification driven by human CO₂ emissions. In the open ocean, calcium carbonates occur mainly as calcite, the least soluble form, and aragonite, a more soluble mineral produced by pteropods (sea butterflies) and thought to dissolve before reaching the deep ocean.",
+        "However, the amount of aragonite present in the ocean remains highly uncertain, with estimates ranging from 10 to 90% of total marine carbonate production. As a result, aragonite cycling is poorly understood and often neglected in biogeochemical models. Recent observations show that aragonite grains can reach the seafloor, even at abyssal depths, where their dissolution may represent a significant and previously unaccounted source of alkalinity, enhancing carbonate preservation in the deep ocean.",
+        "ASPERGE is a three-year research project combining global data analyses, model simulations, and laboratory experiments to quantify seafloor aragonite dissolution, assess its role in the global calcium carbonate cycle, and evaluate its importance in the context of Anthropocene ocean acidification."
+      ],
+      "sections": [
+        {
+          "heading": "Objectives",
+          "items": [
+            "Determine the fate of aragonite in the ocean, particularly its ability to reach and dissolve at the seafloor.",
+            "Clarify the role of aragonite in the global calcium carbonate cycle, a component still poorly quantified and often neglected.",
+            "Assess its contribution to ocean buffering capacity in the context of ongoing anthropogenic ocean acidification."
+          ]
+        },
+        {
+          "heading": "Approach",
+          "body": "The project combines global data analyses, biogeochemical model simulations, and laboratory experiments to investigate aragonite dissolution processes and their implications for the marine carbon system."
+        },
+        {
+          "heading": "Expected Impacts",
+          "items": [
+            "Improved representation of carbonate processes in climate models, leading to more robust future climate predictions.",
+            "Enhanced understanding of deep-ocean alkalinity sources and carbonate preservation mechanisms.",
+            "Better evaluation of ocean acidification impacts, particularly those linked to vulnerable organisms such as pteropods."
+          ]
+        }
+      ],
+      "keywords": "Aragonite dissolution, ocean acidification, calcium carbonate cycle, marine sediments, alkalinity buffering",
+      "lead": { "label": "Lead", "name": "Olivier SULPIS", "slug": "olivier-sulpis", "email_user": "sulpis", "email_domain": "cerege.fr" },
+      "participants": [],
+      "external": [],
+      "note": "Project funded by The Dutch Research Council (NWO).",
+      "funders": []
+    }
+  ]
+}
