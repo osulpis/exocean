@@ -5,7 +5,8 @@
     {
       "slug": "deep-c",
       "name": "DEEP-C",
-      "card_image": "card-erc.jpg",
+      "card_image": "card-deep-c.jpg",
+      "hero_image": "deep-c-fig.jpg",
       "card_text": "Deep-sea carbonates under pressure: mechanisms of dissolution and climate feedbacks.",
       "funder": "ERC Starting Grant (2025–2029)",
       "subtitle": "Deep-sea Carbonates under pressure: mechanisms of dissolution and climate feedbacks",
@@ -177,7 +178,8 @@
     {
       "slug": "forcry",
       "name": "FORCRY",
-      "card_image": "card-erc.jpg",
+      "card_image": "card-forcry.jpg",
+      "hero_image": "forcry-fig.jpg",
       "card_text": "Analysing frozen Foraminifera by Cryostage LA-ICPMS: Neogene CO₂, patterns, cycles, and climate sensitivity.",
       "funder": "ERC Starting Grant (2022–2028)",
       "subtitle": "Analysing frozen Foraminifera by Cryostage LA-ICPMS: Neogene CO₂, patterns, cycles, and climate sensitivity",
