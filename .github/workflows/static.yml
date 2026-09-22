@@ -69,6 +69,8 @@ jobs:
           fi
 
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true   # re-enables Pages if it was ever switched off (e.g. after a private/public flip)
 
       - uses: actions/upload-pages-artifact@v3
         with:
