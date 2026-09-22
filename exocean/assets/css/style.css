@@ -371,6 +371,25 @@ a.person:hover { text-decoration: none; color: inherit; }
 .pub-where { font-size: var(--step--1); color: var(--ink-faint); margin-top: .2rem; }
 .pub-where a { font-weight: 700; }
 
+/* --- latest papers (home) -------------------------------------- */
+.latest-papers { margin: 2.6rem 0 2.2rem; }
+.latest-papers > h2 { margin-bottom: .5rem; }
+.latest-papers ul { list-style: none; padding: 0; margin: 0; }
+.latest-papers li { padding: .7rem 0 .7rem 1rem; border-left: 3px solid var(--orange-soft); margin-bottom: .5rem; }
+.latest-papers li span { display: block; }
+.lp-title { font-weight: 700; line-height: 1.35; }
+.lp-meta { font-size: var(--step--1); color: var(--ink-soft); line-height: 1.5; margin-top: .15rem; }
+.lp-meta strong { color: var(--ink); }
+.lp-all { margin-top: .9rem; font-weight: 700; }
+
+/* --- tools & data (expertise) ---------------------------------- */
+.tools { border-top: 1px solid var(--line); padding-top: 1.6rem; margin-top: 2.2rem; }
+.tools > h2 { margin-top: 0; }
+.tools-list { list-style: none; padding: 0; margin: 1.2rem 0 0; }
+.tools-list li { padding: .8rem 0 .8rem 1rem; border-left: 3px solid var(--orange-soft); margin-bottom: .6rem; }
+.tools-list li a { font-weight: 700; display: block; line-height: 1.35; }
+.tools-list li span { display: block; font-size: var(--step--1); color: var(--ink-soft); line-height: 1.5; margin-top: .15rem; }
+
 /* --- contact --------------------------------------------------- */
 .contact-card {
   border: 1px solid var(--line); border-radius: var(--radius);

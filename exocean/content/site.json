@@ -78,6 +78,18 @@
     ]
   },
 
+  "tools": {
+    "title": "Tools and data we share",
+    "intro": "Some of what the laboratory builds is meant to be reused. Everything below is open; write to us if you use it, get stuck, or would like something that is not listed.",
+    "items": [
+      { "label": "RADI — reaction-transport model of ocean sediments", "url": "https://github.com/RADI-model", "desc": "The reactive-advective-diffusive-irrigative early-diagenesis model, in Julia (Radi.jl) and MATLAB/GNU Octave (Radi.m). RADIv2 handles coastal and open-ocean sediments alike." },
+      { "label": "RADIv2 paper — Geoscientific Model Development (2026)", "url": "https://doi.org/10.5194/gmd-19-1965-2026", "desc": "How the model works and how to set it up; RADIv1 is described in GMD (2022), doi:10.5194/gmd-15-2105-2022." },
+      { "label": "FORCIS — global database of planktonic foraminifera counts", "url": "https://doi.org/10.5281/zenodo.7390792", "desc": "Distribution and diversity of living planktonic foraminifera from a century of net, pump, trap and continuous-plankton-recorder samples (Scientific Data / Zenodo)." },
+      { "label": "forcis — R package (rOpenSci / CRAN)", "url": "https://docs.ropensci.org/forcis/", "desc": "Download, filter, harmonise and map the FORCIS data from R." },
+      { "label": "Our publications on HAL", "url": "publications.html", "desc": "Every article by the team, with open-access PDFs where they exist, refreshed automatically from the French national archive." }
+    ]
+  },
+
   "contact": {
     "title": "Let's connect!",
     "lede": "- Curious to learn more about our work or explore a potential collaboration?",

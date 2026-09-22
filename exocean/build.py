@@ -250,6 +250,53 @@ def prune() -> None:
 # pages
 # --------------------------------------------------------------------------
 
+def latest_papers(depth: int, n: int = 3) -> str:
+    """The newest journal articles from content/publications.json, for the home
+    page. Refreshes itself with the weekly HAL run; absent if there is no data."""
+    items = (PUBLICATIONS or {}).get("items") or []
+    if not items:
+        return ""
+    newest = sorted(items, key=lambda x: (x.get("date") or "", x.get("year") or 0), reverse=True)[:n]
+    rows = []
+    for it in newest:
+        href = f"https://doi.org/{it['doi']}" if it.get("doi") else f"https://hal.science/{it['hal']}"
+        where = escape(it.get("journal") or "")
+        rows.append(f"""          <li>
+            <a class="lp-title" href="{escape(href)}">{escape(it['title'])}</a>
+            <span class="lp-meta">{format_authors(it['authors'])}</span>
+            <span class="lp-meta"><em>{where}</em>{' · ' if where else ''}{it.get('year') or ''}</span>
+          </li>""")
+    return f"""
+        <section class="latest-papers" aria-label="Latest papers">
+          <h2>Latest papers</h2>
+          <hr class="rule short">
+          <ul>
+{chr(10).join(rows)}
+          </ul>
+          <p class="lp-all"><a href="{rel(depth, 'publications.html')}">All our publications →</a></p>
+        </section>
+"""
+
+
+def tools_block() -> str:
+    """'Tools and data we share' on the Expertise page (text in site.json)."""
+    t = SITE.get("tools")
+    if not t:
+        return ""
+    lis = "\n".join(
+        f"""          <li><a href="{escape(i['url'])}">{escape(i['label'])}</a><span>{escape(i['desc'])}</span></li>"""
+        for i in t["items"]
+    )
+    return f"""        <section class="tools" id="tools">
+          <h2>{escape(t['title'])}</h2>
+          <p>{escape(t['intro'])}</p>
+          <ul class="tools-list">
+{lis}
+          </ul>
+        </section>
+"""
+
+
 def build_home() -> None:
     h = SITE["home"]
     d = 0
@@ -287,7 +334,7 @@ def build_home() -> None:
           <a class="btn" href="team.html">Meet the team</a>
           <a class="btn primary" href="contact.html#join">Want to be part of the adventure?</a>
         </div>
-
+{latest_papers(d)}
         <h2>{escape(h['where_title'])}</h2>
         <hr class="rule short">
         {"".join(f"<p>{p}</p>" for p in h["where"])}
@@ -323,6 +370,7 @@ def build_expertise() -> None:
           <img src="{asset(d, e['hero'])}" alt="Inside the exocean laboratory at CEREGE" width="1400" height="934">
         </figure>
 {items}
+{tools_block()}
         <div class="btn-row two">
           <a class="btn" href="projects.html">Explore our projects</a>
           <a class="btn" href="news.html">News &amp; Highlights</a>
@@ -530,6 +578,8 @@ def build_person(m: dict) -> None:
     if m.get("idhal"):
         link_list.insert(0, {"label": "Publications (HAL)",
                              "url": f"https://hal.science/search/index/?q=*&authIdHal_s={m['idhal']}"})
+    if m.get("orcid"):
+        link_list.insert(0, {"label": f"ORCID {m['orcid']}", "url": f"https://orcid.org/{m['orcid']}"})
     if link_list:
         items = "".join(f'<li><a href="{escape(l["url"])}">{escape(l["label"])}</a></li>' for l in link_list)
         links = f'        <p style="margin-top:1.4rem"><strong>Find more about my scientific work:</strong></p>\n        <ul class="links-list">{items}</ul>'

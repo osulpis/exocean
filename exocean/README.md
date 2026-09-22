@@ -14,7 +14,7 @@ Everything else is generated.
 
 | File | What's in it |
 |---|---|
-| `content/site.json` | Home page, Expertise page, "Join us" text, contact details, menu, site address |
+| `content/site.json` | Home page, Expertise page (incl. "Tools and data we share"), "Join us" text, contact details, menu, site address |
 | `content/team.json` | Every person, their photo, bio and links (plus an empty "Former members" group) |
 | `content/projects.json` | Deep-C, MANGO, DYNAMITE, ForCry, ASPERGE |
 | `content/news.json` | News items (with a month/year date) and the press/media lists |
@@ -72,7 +72,8 @@ collaborators are set up.
 
 Add `"idhal": "firstname-lastname"` (their HAL author identifier) and their
 papers join the Publications page at the next refresh, with a "Publications
-(HAL)" link on their own page.
+(HAL)" link on their own page. Add `"orcid": "0000-0000-0000-0000"` and an
+ORCID link appears first in their links.
 
 **Someone leaves** — move their block into the `"Former members"` group at the
 bottom of `team.json` (it is invisible while empty). Put the years in `"role"`,
